@@ -23,13 +23,13 @@ def horizontal_shuffle(image):
     numbars = int(height/chosendivisor)
     barheight = chosendivisor
     bars = []
-    wet = Image.new(image.mode, image.size)
+    wet = Image.new(image.mode, image.size, (255,255,255))
 
     for j in range(0, numbars):
         barleft = 0
         barupper = (barheight * j)
         barright = int(width)
-        barlower = barupper + barheight - 1
+        barlower = barupper + barheight
         print((barleft, barupper, barright, barlower))
         box = (barleft, barupper, barright, barlower)
         bar = image.crop(box)
@@ -43,7 +43,7 @@ def horizontal_shuffle(image):
         corner = (0, k*barheight)
         wet.paste(bar, corner)
 
-    wet.save("wet/final.jpg")
+    wet.save("wet/output.jpg")
 try:
     im = Image.open("dry/aztec_eagle.jpg")
 except IOError:
