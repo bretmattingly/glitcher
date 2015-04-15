@@ -10,12 +10,14 @@ from numpy import asarray
 def sort_horizontal_bar(bar):
     pixels = bar.load()
     width, height = bar.size
-    rows = []
-    for y in range(im.size[0]):
-        for x in range(im.size[1]):
-            rows[y].apppend(pixels[x, y])
-    for row in rows:
+    rows = [[0 for x in range(0, width)] for y in range(0, height)]
+    for y in range(0, height-1):
+        for x in range(0, width-1):
+            rows[x][y] = pixels[x, y]
+    for x, row in enumerate(rows):
         row.sort()
+        for y, pixel in enumerate(row):
+            pixels[x, y] = pixel
     bar.show()
 
 """
