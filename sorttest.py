@@ -8,17 +8,31 @@ from numpy import asarray
 
 
 def sort_horizontal_bar(bar):
+    bar.show()
     pixels = bar.load()
     width, height = bar.size
-    rows = [[0 for x in range(0, width)] for y in range(0, height)]
-    for y in range(0, height-1):
-        for x in range(0, width-1):
-            rows[x][y] = pixels[x, y]
-    for x, row in enumerate(rows):
-        row.sort()
-        for y, pixel in enumerate(row):
+    bars = []
+    for y in range(height):
+        thisbar = []
+        for x in range(width):
+            thisbar.append(pixels[x, y])
+
+        bars.append(thisbar)
+
+    # Now we have a list of lists, which might be a little easier to access.
+
+    for y, bartosort in enumerate(bars):
+        bartosort.sort()
+        for x, pixel in enumerate(bartosort):
             pixels[x, y] = pixel
+
     bar.show()
+
+'''
+PixelAccess object is, for some reason, not iterable.
+So we copy it all into a 2D array of rows, sort the rows,
+Then rewrite the pixels from the sorted rows.
+'''
 
 """
 Utility function for slicing up an image horizontally.
