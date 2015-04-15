@@ -10,7 +10,6 @@ def sort_horizontal_bar(bar, debug=False):
     :param debug: Boolean whether or not to show the bar after sorting is complete. Default False.
     :return: The bar, pixel sorted in place.
     """
-    bar.show()
     pixels = bar.load()
     width, height = bar.size
     bars = []
