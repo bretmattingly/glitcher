@@ -174,7 +174,7 @@ def sort_horizontal_bar(bar):
     pass
 
 try:
-    im = Image.open("dry/output2.jpg")
+    im = Image.open("dry/armored_skeleton.jpg")
 except IOError:
     print("File not found, you done messed up")
     exit()
